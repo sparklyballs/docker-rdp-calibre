@@ -41,11 +41,8 @@ apt-get install -y ImageMagick && \
 
 # Install steps for X app
 wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()" && \
-mkdir -p /etc/my_init.d && \
-mkdir -p /tmp/calibre-installer-cache
+mkdir -p /etc/my_init.d
 COPY firstrun.sh /etc/my_init.d/firstrun.sh
-COPY src/calibre-2.30.0-x86_64.txz /tmp/calibre-installer-cache/calibre-2.30.0-x86_64.txz
-COPY src/calibre-2.30.0-x86_64.txz.signature /tmp/calibre-installer-cache/calibre-2.30.0-x86_64.txz.signature
 RUN chmod +x /etc/my_init.d/firstrun.sh
 
 # Copy X app start script to right location
